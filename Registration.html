@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+</head>
+<body>
+	<form action="Registration.php" method="POST">
+		<table height="700" width="550" align="center" border="1">
+			<tr>
+				<td colspan="3" align="center"><h1>Registration Form</h1>For<br/>NSS Training Center</td>
+			</tr>
+			<tr>
+				<td width="20%">Name:</td>
+				<td width="50%%">
+					<input type="text" name="Name">
+				</td>
+				<td width="10%"></td>
+			</tr>
+			<tr>
+				<td width="20%">User Id:</td>
+				<td width="50%%">
+					<input type="text" name="UserId">
+				</td>
+				<td width="10%"></td>
+			</tr>
+			<tr>
+				<td width="20%">Password:</td>
+				<td width="50%%">
+					<input type="Password" name="Password">
+				</td>
+				<td width="10%"></td>
+			</tr>
+			<tr>
+				<td width="20%">Retype Password:</td>
+				<td width="50%%">
+					<input type="Password" name="RePassword">
+				</td>
+				<td width="10%"></td>
+			</tr>
+			<tr>
+				<td width="20%">Gender:</td>
+				<td width="50%%">
+					<input type="radio" name="Gender" value="Male">Male
+					<input type="radio" name="Gender" value="Female">Female
+					<input type="radio" name="Gender" value="Other">Other
+				</td>
+				<td width="10%"></td>
+			</tr>
+			<tr>
+				<td width="20%">Date Of Birth:</td>
+				<td width="50%%">
+					<input type="text" name="DOB"> <i>dd/mm/yyyy</i>
+				</td>
+				<td width="10%"></td>
+			</tr>
+			<tr>
+				<td width="20%">Email:</td>
+				<td width="50%%">
+					<input type="email" name="Email">
+				</td>
+				<td width="10%"></td>
+			</tr>
+			<tr>
+				<td width="20%">Phone No:</td>
+				<td width="50%%">
+					<input type="text" name="PhoneNo">
+				</td>
+				<td width="10%"></td>
+			</tr>
+			<tr>
+				<td width="15%">User Type:</td>
+				<td width="50%%">
+					<select name="UserType" required>
+						<option value="">None</option>
+						<option>Admin</option>
+						<option>Student</option>
+						<option>Trainer</option>					
+					</select>
+				</td>
+				<td width="10%"></td>
+			</tr>
+			<tr>
+				<td colspan="3" align="right">
+					<input type="Submit" name="Submit" value="Submit">
+					<input type="Reset" name="Reset" value="Reset">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

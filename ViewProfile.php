@@ -2,14 +2,14 @@
 	session_start();
 	if(!empty($_SESSION))
 	{
-		if(empty($_SESSION['status']) or $_SESSION['UserType']!="Admin")
+		if(empty($_SESSION['status']))
 		{
 			header('location:Logout.php');
 		}
 	}
 	else
 	{
-		if(empty($_COOKIE['status']) or $_COOKIE['UserType']!="Admin")
+		if(empty($_COOKIE['status']))
 		{
 			header('location:Logout.php');
 		}
@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin Home</title>
+	<title>View Profile</title>
 </head>
 <body>
 	<fieldset>
@@ -78,15 +78,97 @@
 					</ul>
 				</td>
 				<td>
-					<?php
-						if(!empty($_SESSION))
-						{
-							echo "<h1 align='center'><font color='black'>Welcome ".$_SESSION['Name']."</font></h1>";
-						}
-						else
-							echo "<h1 align='center'><font color='black'>Welcome ".$_COOKIE['Name']."</font></h1>";
-					?>	
-					<p align="center"><font size="3" color='black'>To NSS Training Center Admin Home</font></p>
+					<table width="100%">
+						<tr>
+							<td width="15%">Name</td>
+							<td>:</td>
+							<td>
+								<?php
+									if(!empty($_SESSION))
+									{
+										echo $_SESSION['Name'];
+									}
+									else
+										echo $_COOKIE['Name'];
+								?>
+							</td>
+						</tr>
+						<tr><td colspan="3"><hr/></td></tr>			
+						<tr>
+							<td>Gender</td>
+							<td>:</td>
+							<td>
+								<?php
+									if(!empty($_SESSION))
+									{
+										echo $_SESSION['Gender'];
+									}
+									else
+										echo $_COOKIE['Gender'];
+								?>
+							</td>
+						</tr>			
+						<tr><td colspan="3"><hr/></td></tr>
+						<tr>
+							<td>Date of Birth</td>
+							<td>:</td>
+							<td>
+								<?php
+									if(!empty($_SESSION))
+									{
+										echo $_SESSION['DOB'];
+									}
+									else
+										echo $_COOKIE['DOB'];
+								?>
+							</td>
+						</tr>
+						<tr><td colspan="3"><hr/></td></tr>
+						<tr>
+							<td>Email</td>
+							<td>:</td>
+							<td>
+								<?php
+									if(!empty($_SESSION))
+									{
+										echo $_SESSION['Email'];
+									}
+									else
+										echo $_COOKIE['Email'];
+								?>
+							</td>
+						</tr>
+						<tr><td colspan="3"><hr/></td></tr>
+						<tr>
+							<td>Phone No</td>
+							<td>:</td>
+							<td>
+								<?php
+									if(!empty($_SESSION))
+									{
+										echo $_SESSION['PhoneNo'];
+									}
+									else
+										echo $_COOKIE['PhoneNo'];
+								?>
+							</td>
+						</tr>
+						<tr><td colspan="3"><hr/></td></tr>
+						<tr>
+							<td>User Type</td>
+							<td>:</td>
+							<td>
+								<?php
+									if(!empty($_SESSION))
+									{
+										echo $_SESSION['UserType'];
+									}
+									else
+										echo $_COOKIE['UserType'];
+								?>
+							</td>
+						</tr>
+					</table>
 				</td>
 			</tr>
 		</table>

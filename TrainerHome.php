@@ -2,16 +2,16 @@
 	session_start();
 	if(!empty($_SESSION))
 	{
-		if(empty($_SESSION['status']))
+		if(empty($_SESSION['status']) or $_SESSION['UserType']!="Trainer")
 		{
-			header('location:Login.html');
+			header('location:Logout.php');
 		}
 	}
 	else
 	{
-		if(empty($_COOKIE['status']))
+		if(empty($_COOKIE['status']) or $_COOKIE['UserType']!="Trainer")
 		{
-			header('location:Login.html');
+			header('location:Logout.php');
 		}
 	}
 ?>
@@ -38,6 +38,39 @@
 			<tr>
 				<td colspan="10">
 					<ul>
+						<?php
+							if(!empty($_SESSION))
+							{
+								if($_SESSION['UserType']=="Trainer")
+								{
+									echo "<li><a href='TrainerHome.php'><font color='red'>Home</font></a></li>";
+								}
+								elseif($_SESSION['UserType']=="Student")
+								{
+									echo "<li><a href='StudentHome.php'><font color='red'>Home</font></a></li>";
+								}
+								else
+								{
+									echo "<li><a href='AdminHome.php'><font color='red'>Home</font></a></li>";
+								}
+							}
+							else
+							{
+								if($_COOKIE['UserType']=="Trainer")
+								{
+									echo "<li><a href='TrainerHome.php'><font color='red'>Home</font></a></li>";
+								}
+								elseif($_COOKIE['UserType']=="Student")
+								{
+									echo "<li><a href='StudentHome.php'><font color='red'>Home</font></a></li>";
+								}
+								else
+								{
+									echo "<li><a href='AdminHome.php'><font color='red'>Home</font></a></li>";
+								}
+							}
+								
+						?>
 						<li><a href="ViewProfile.php"><font color="red">View Profile</font></a></li>
 						<li><a href="EditProfile"><font color="red">Edit Profile</font></a></li>
 						<li><a href="ChangePassword.php"><font color="red">Change Password</font></a></li>

@@ -29,6 +29,16 @@
 					setcookie('UserType',$data['UserType'],time()+10000,'/');
 					setcookie('status','set',time()+10000,'/');
 					//print_r($_COOKIE);
+					if ($_COOKIE['UserType']=="Admin") 
+					{
+						header('location:AdminHome.php');
+					}
+					elseif ($_COOKIE['UserType']=="Student") 
+					{
+						header('location:StudentHome.php');
+					}
+					else
+						header('location:TrainerHome.php');
 				}
 				else
 				{
@@ -42,6 +52,16 @@
 					$_SESSION['UserType'] = $data['UserType'];
 					$_SESSION['status']  = "set";
 					//print_r($_SESSION);
+					if ($_SESSION['UserType']=="Admin") 
+					{
+						header('location:AdminHome.php');
+					}
+					elseif ($_SESSION['UserType']=="Student") 
+					{
+						header('location:StudentHome.php');
+					}
+					else
+						header('location:TrainerHome.php');
 				}
 			}
 			else

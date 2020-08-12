@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ClassTime</title>
+	<title>Attendence Section</title>
 </head>
 <body>
 	<fieldset>
@@ -55,46 +55,16 @@
 					</ul>
 				</td>
 				<td>
-					<table width="100%" border="1" cellspacing="0" cellpadding="0">
+					<table width="100%">
+						<tr><td colspan="3"><hr/></td></tr>
 						<tr>
-							<td width="20%"></td>
-							<td width="10%"><b>Saturday</b></td>
-							<td width="10%">Sunday</td>
-							<td width="10%">Monday</td>
-							<td width="10%">Tuesday</td>
-							<td width="10%">Wednesday</td>
-							<td width="10%">Thursday</td>
-							<td width="10%">Friday</td>
+							<td colspan="3">
+								<form>
+									Add Attendence Excel File: <input type="file" name="file"><input type="submit" name="Add">
+								</form>
+							</td>
 						</tr>
-						<tr>
-							<td width="10%">Webtech Section A</td>
-							<td width="10%"></td>
-							<td width="10%">8am-11am</td>
-							<td width="10%"></td>
-							<td width="10%">8am-10am</td>
-							<td width="10%"></td>
-							<td width="10%"></td>
-							<td width="10%"></td>
-						</tr>
-						<tr>
-							<td width="10%">Webtech Section H</td>
-							<td width="10%"></td>
-							<td width="10%">2pm-5pm</td>
-							<td width="10%"></td>
-							<td width="10%">2pm-4pm</td>
-							<td width="10%"></td>
-							<td width="10%"></td>
-							<td width="10%"></td>
-						<tr>
-							<td width="10%">Webtech Section G</td>
-							<td width="10%"></td>
-							<td width="10%"></td>
-							<td width="10%">8am-11am</td>
-							<td width="10%"></td>
-							<td width="10%">8am-10am</td>
-							<td width="10%"></td>
-							<td width="10%"></td>
-						</tr>
+						<tr><td colspan="3"><hr/></td></tr>
 					</table>
 				</td>
 			</tr>

@@ -27,10 +27,10 @@
 		<?php
 			if(!empty($_SESSION))
 			{
-				echo "<p align='right'><font color='black'>Logged in as </font><a href='Profile.php'><font color='red'>".$_SESSION['Name']."</font></a> | <a href='Logout.php'><font color='red'>Logout</font></a></p>";
+				echo "<p align='right'><font color='black'>Logged in as </font><a href='ViewProfile.php'><font color='red'>".$_SESSION['Name']."</font></a> | <a href='Logout.php'><font color='red'>Logout</font></a></p>";
 			}
 			else
-				echo "<p align='right'><font color='black'>Logged in as </font><a href='Profile.php'><font color='red'>".$_COOKIE['Name']."</font></a> | <a href='Logout.php'><font color='red'>Logout</font></a></p>";
+				echo "<p align='right'><font color='black'>Logged in as </font><a href='ViewProfile.php'><font color='red'>".$_COOKIE['Name']."</font></a> | <a href='Logout.php'><font color='red'>Logout</font></a></p>";
 		?>
 	</fieldset>
 	<fieldset>
@@ -38,43 +38,20 @@
 			<tr>
 				<td colspan="10">
 					<ul>
-						<?php
-							if(!empty($_SESSION))
-							{
-								if($_SESSION['UserType']=="Trainer")
-								{
-									echo "<li><a href='TrainerHome.php'><font color='red'>Home</font></a></li>";
-								}
-								elseif($_SESSION['UserType']=="Student")
-								{
-									echo "<li><a href='StudentHome.php'><font color='red'>Home</font></a></li>";
-								}
-								else
-								{
-									echo "<li><a href='AdminHome.php'><font color='red'>Home</font></a></li>";
-								}
-							}
-							else
-							{
-								if($_COOKIE['UserType']=="Trainer")
-								{
-									echo "<li><a href='TrainerHome.php'><font color='red'>Home</font></a></li>";
-								}
-								elseif($_COOKIE['UserType']=="Student")
-								{
-									echo "<li><a href='StudentHome.php'><font color='red'>Home</font></a></li>";
-								}
-								else
-								{
-									echo "<li><a href='AdminHome.php'><font color='red'>Home</font></a></li>";
-								}
-							}
-								
-						?>
+						<li><a href='TrainerHome.php'><font color='red'>Home</font></a></li>
 						<li><a href="ViewProfile.php"><font color="red">View Profile</font></a></li>
-						<li><a href="EditProfile"><font color="red">Edit Profile</font></a></li>
+						<li><a href="EditProfile.php"><font color="red">Edit Profile</font></a></li>
 						<li><a href="ChangePassword.php"><font color="red">Change Password</font></a></li>
+						<li><a href="File.php"><font color="red">Files</font></a></li>
+						<li><a href="Notice.php"><font color="red">Notices</font></a></li>
+						<li><a href="StudentMarks.php"><font color="red">Student Marks</font></a></li>
+						<li><a href="SendMail.php"><font color="red">Send Mail</font></a></li>
+						<li><a href="Assignments.php"><font color="red">Assignments</font></a></li>
+						<li><a href="ClassTimes.php"><font color="red">Class Times</font></a></li>
+						<li><a href="Attendence.php"><font color="red">Attendence</font></a></li>
 						<li><a href="Logout.php"><font color="red">Logout</font></a></li>
+
+
 					</ul>
 				</td>
 				<td>

@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>View Profile</title>
+	<title>Edit Profile</title>
 </head>
 <body>
 	<fieldset>
@@ -113,97 +113,58 @@
 					</ul>
 				</td>
 				<td>
-					<table width="100%">
-						<tr>
-							<td width="15%">Name</td>
-							<td>:</td>
-							<td>
-								<?php
-									if(!empty($_SESSION))
-									{
-										echo $_SESSION['Name'];
-									}
-									else
-										echo $_COOKIE['Name'];
-								?>
-							</td>
-						</tr>
-						<tr><td colspan="3"><hr/></td></tr>			
-						<tr>
-							<td>Gender</td>
-							<td>:</td>
-							<td>
-								<?php
-									if(!empty($_SESSION))
-									{
-										echo $_SESSION['Gender'];
-									}
-									else
-										echo $_COOKIE['Gender'];
-								?>
-							</td>
-						</tr>			
-						<tr><td colspan="3"><hr/></td></tr>
-						<tr>
-							<td>Date of Birth</td>
-							<td>:</td>
-							<td>
-								<?php
-									if(!empty($_SESSION))
-									{
-										echo $_SESSION['DOB'];
-									}
-									else
-										echo $_COOKIE['DOB'];
-								?>
-							</td>
-						</tr>
-						<tr><td colspan="3"><hr/></td></tr>
-						<tr>
-							<td>Email</td>
-							<td>:</td>
-							<td>
-								<?php
-									if(!empty($_SESSION))
-									{
-										echo $_SESSION['Email'];
-									}
-									else
-										echo $_COOKIE['Email'];
-								?>
-							</td>
-						</tr>
-						<tr><td colspan="3"><hr/></td></tr>
-						<tr>
-							<td>Phone No</td>
-							<td>:</td>
-							<td>
-								<?php
-									if(!empty($_SESSION))
-									{
-										echo $_SESSION['PhoneNo'];
-									}
-									else
-										echo $_COOKIE['PhoneNo'];
-								?>
-							</td>
-						</tr>
-						<tr><td colspan="3"><hr/></td></tr>
-						<tr>
-							<td>User Type</td>
-							<td>:</td>
-							<td>
-								<?php
-									if(!empty($_SESSION))
-									{
-										echo $_SESSION['UserType'];
-									}
-									else
-										echo $_COOKIE['UserType'];
-								?>
-							</td>
-						</tr>
-					</table>
+					<form method="POST">
+						<table width="100%">
+							<tr>
+								<td width="15%">Name</td>
+								<td>:</td>
+								<td>
+									<input type="text" name="Name">
+								</td>
+							</tr>
+							<tr><td colspan="3"><hr/></td></tr>			
+							<tr>
+								<td>Gender</td>
+								<td>:</td>
+								<td>
+									<input type="radio" name="Gender" value="Male">Male
+									<input type="radio" name="Gender" value="Female">Female
+									<input type="radio" name="Gender" value="Other">Other
+								</td>
+							</tr>			
+							<tr><td colspan="3"><hr/></td></tr>
+							<tr>
+								<td>Date of Birth</td>
+								<td>:</td>
+								<td>
+									<input type="text" name="DOB"> <i>dd/mm/yyyy</i>
+								</td>
+							</tr>
+							<tr><td colspan="3"><hr/></td></tr>
+							<tr>
+								<td>Email</td>
+								<td>:</td>
+								<td>
+									<input type="email" name="Email">
+								</td>
+							</tr>
+							<tr><td colspan="3"><hr/></td></tr>
+							<tr>
+								<td>Phone No</td>
+								<td>:</td>
+								<td>
+									<input type="text" name="PhoneNo">
+								</td>
+							</tr>
+							<tr><td colspan="3"><hr/></td></tr>
+							<tr>
+								<td colspan="3" align="left" >
+									<input type="Submit" name="Save" value="Save">
+									<input type="Reset" name="Clear" value="Clear">
+								</td>
+							</tr>
+						</table>
+					</form>
 					<hr/>
 				</td>
 			</tr>
@@ -211,3 +172,36 @@
 	</fieldset>
 </body>
 </html>
+<?php
+	if(isset($_POST['Save']))
+	{
+		if(empty($_POST['Name']) || empty($_POST['Gender']) || empty($_POST['DOB']) || empty($_POST['Email']) || empty($_POST['PhoneNo']))
+		{
+			echo "Null Submission!!!";
+		}
+		else
+		{
+			$connection = mysqli_connect('127.0.0.1', 'root', '', 'training center management website');
+			if(!empty($_SESSION))
+			{
+				$result = mysqli_query($connection, "update `registration` SET `Name`='".$_POST['Name']."',`Gender`='".$_POST['Gender']."',`DOB`='".$_POST['DOB']."',`Email`='".$_POST['Email']."',`PhoneNo`='".$_POST['PhoneNo']."' WHERE UserId='".$_SESSION['UserId']."'");
+				$_SESSION['Name']= $_POST['Name'];
+				$_SESSION['Gender']= $_POST['Gender'];
+				$_SESSION['DOB'] = $_POST['DOB'];
+				$_SESSION['Email'] = $_POST['Email'];
+				$_SESSION['PhoneNo'] = $_POST['PhoneNo'];
+			}
+			else
+			{
+				$result = mysqli_query($connection, "update `registration` SET `Name`='".$_POST['Name']."',`Gender`='".$_POST['Gender']."',`DOB`='".$_POST['DOB']."',`Email`='".$_POST['Email']."',`PhoneNo`='".$_POST['PhoneNo']."' WHERE UserId='".$_COOKIE['UserId']."'");
+				setcookie('Name',$_POST['Name'],time()+10000,'/');
+				setcookie('Gender',$_POST['Gender'],time()+10000,'/');
+				setcookie('DOB',$_POST['DOB'],time()+10000,'/');
+				setcookie('Email',$_POST['Email'],time()+10000,'/');
+				setcookie('PhoneNo',$_POST['PhoneNo'],time()+10000,'/');
+			}
+			mysqli_close($connection);			
+			header('location:EditProfile.php');
+		}
+	}
+?>
